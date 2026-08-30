@@ -1,1 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AHT TopUp</title>
 
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1220;
+  color: white;
+}
+
+.container {
+  max-width: 650px;
+  margin: auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 25px 10px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 34px;
+}
+
+.header p {
+  color: #b7c2d6;
+}
+
+.card {
+  background: #17243b;
+  padding: 20px;
+  margin-bottom: 18px;
+  border-radius: 16px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.lookup {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+}
+
+.packages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.package {
+  background: #263754;
+  color: white;
+  font-weight: bold;
+}
+
+.package:hover {
+  background: #334b70;
+}
+
+#selected {
+  background: #0f1a2d;
+  padding: 14px;
+  margin-top: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.buy {
+  width: 100%;
+  margin-top: 15px;
+  background: #16a34a;
+  color: white;
+  font-weight: bold;
+}
+
+.payment {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  margin-top: 10px;
+}
+
+#message,
+#player,
+#history,
+#adminPanel {
+  margin-top: 15px;
+  padding: 15px;
+  background: #0f1a2d;
+  border-radius: 10px;
+  line-height: 1.7;
+}
+
+.order {
+  padding: 14px 0;
+  border-bottom: 1px solid #334155;
+}
+
+.complete {
+  background: #16a34a;
+  color: white;
+  margin-top: 8px;
+  width: 100%;
+}
+
+footer {
+  text-align: center;
+  color: #94a3b8;
+  padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>🔥 AHT TopUp</h1>
+    <p>Free Fire Diamond & Membership Top-Up</p>
+  </div>
+
+  <!-- UID -->
+  <div class="card">
+
+    <h2>👤 Player Information</h2>
+
+    <label>Free Fire UID</label>
+
+    <input
+      id="uid"
+      type="text"
+      placeholder="Enter your Free Fire UID"
+    >
+
+    <button class="lookup" onclick="checkPlayer()">
+      🔍 Check Player
+    </button>
+
+    <div id="player"></div>
+
+  </div>
+
+
+  <!-- Diamonds -->
+  <div class="card">
+
+    <h2>💎 Diamonds</h2>
+
+    <div class="packages">
+
+      <button class="package"
+        onclick="selectPackage('100 Diamonds',80)">
+        💎 100<br>৳80
+      </button>
+
+      <button class="package"
+        onclick="selectPackage('310 Diamonds',220)">
+        💎 310<br>৳220
+      </button>
+
+      <button class="package"
+        onclick="selectPackage('520 Diamonds',350)">
+        💎 520<br>৳350
+      </button>
+
+      <button class="package"
+        onclick="selectPackage('1060 Diamonds',700)">
+        💎 1060<br>৳700
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- Membership -->
+  <div class="card">
+
+    <h2>🎟️ Membership</h2>
+
+    <div class="packages">
+
+      <button class="package"
+        onclick="selectPackage('Weekly Lite',70)">
+        🎟️ Weekly Lite<br>৳70
+      </button>
+
+      <button class="package"
+        onclick="selectPackage('Weekly',170)">
+        🎟️ Weekly<br>৳170
+      </button>
+
+      <button class="package"
+        onclick="selectPackage('Monthly',750)">
+        🎟️ Monthly<br>৳750
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div id="selected">
+    No package selected
+  </div>
+
+
+  <button class="buy" onclick="checkout()">
+    🛒 Continue to Checkout
+  </button>
+
+
+  <div id="message"></div>
+
+
+  <!--
